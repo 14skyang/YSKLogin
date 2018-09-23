@@ -19,8 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String user_name = intent.getStringExtra("userName");
-        username.setText("欢迎："+
-                user_name);
+        username.setText("欢迎："+ user_name);
 
     }
     //表明一个要销毁的活动从活动管理器里移除
