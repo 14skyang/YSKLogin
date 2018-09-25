@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.litepal.LitePal;
 import org.litepal.crud.DataSupport;
 
 import java.util.List;
@@ -50,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                 //判断是否成功匹配的标志
                 boolean flag = false;
                 //LitePal里遍历查询所有数据的方法
-                List<User> users = DataSupport.findAll(User.class);
+                List<User> users = LitePal.findAll(User.class);
                 for (User user : users){
                     //判断用户输入的用户名和密码是否与数据库中相同
                     if(user.getUsername().equals(username.getText().toString())&&

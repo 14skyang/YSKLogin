@@ -1,8 +1,8 @@
 package com.ysk.ysklogin;
 
-import org.litepal.crud.DataSupport;
+import org.litepal.crud.LitePalSupport;
 
-public class User extends DataSupport {
+public class User extends LitePalSupport {
     private String username;
     private String password;
 
