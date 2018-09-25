@@ -26,13 +26,10 @@ public class RegistActivity extends AppCompatActivity {
     private String strusername;
     private String strpassword;
 
-    private String u;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //将一个正在创建的活动添加到活动管理器中
-        ActivityCollector.addActivity(this);
         setContentView(R.layout.regist_layout);
         Button yes = (Button) findViewById(R.id.YES);
         Button no = (Button) findViewById(R.id.NO);
@@ -43,8 +40,8 @@ public class RegistActivity extends AppCompatActivity {
                 EditText password = (EditText) findViewById(R.id.password);
                 strusername = username.getText().toString();
                 strpassword = password.getText().toString();
-                Log.e("aaa", "用户名：" + strusername);
-                Log.e("aaa", "密码：" + strpassword);
+                Log.e(TAG, "用户名：" + strusername);
+                Log.e(TAG, "密码：" + strpassword);
                 //判断用户注册是否输入了密码和用户名
                 //首先学会如何判断EditText中内容为空，要包含trim（去掉首部空格）
                 if (TextUtils.isEmpty(strusername)) {
@@ -70,7 +67,7 @@ public class RegistActivity extends AppCompatActivity {
                             user.setPassword(strpassword);
                             user.save();
                             Toast.makeText(RegistActivity.this, "创建用户成功", Toast.LENGTH_SHORT).show();
-                            finish();
+                            finish();//结束本活动，就会回到登陆活动
                         }
                     }
                 } else {
@@ -80,7 +77,7 @@ public class RegistActivity extends AppCompatActivity {
                     user.setPassword(strpassword);
                     user.save();
                     Toast.makeText(RegistActivity.this, "创建用户成功", Toast.LENGTH_SHORT).show();
-                    finish();
+                    finish();//结束本活动，就会回到登陆活动
                 }
             }
 
@@ -90,17 +87,9 @@ public class RegistActivity extends AppCompatActivity {
         no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                finish();//结束本活动，就会回到登陆活动
             }
         });
-    }
-
-
-    //表明一个要销毁的活动从活动管理器里移除
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        ActivityCollector.removeActivity(this);
     }
 
 
