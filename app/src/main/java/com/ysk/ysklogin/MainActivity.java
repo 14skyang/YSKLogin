@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
         TextView username = (TextView)findViewById(R.id.su);
-        Intent intent = getIntent();
+        Intent intent = getIntent();//接收传值
         String user_name = intent.getStringExtra("userName");
         username.setText("欢迎："+ user_name);
 

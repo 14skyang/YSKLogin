@@ -60,25 +60,19 @@ public class RegistActivity extends AppCompatActivity {
                     for (User user : users) {
                         if (strusername.equals(user.getUsername())) {
                             Toast.makeText(RegistActivity.this, "该用户名已经注册", Toast.LENGTH_SHORT).show();
-                            return;
-                        } else {
-                            //存储用户名密码
-                            user.setUsername(strusername);
-                            user.setPassword(strpassword);
-                            user.save();
-                            Toast.makeText(RegistActivity.this, "创建用户成功", Toast.LENGTH_SHORT).show();
-                            finish();//结束本活动，就会回到登陆活动
+                            return;//退出遍历
                         }
                     }
-                } else {
-                    //users数据为空,存数据
-                    User user = new User();
-                    user.setUsername(strusername);
-                    user.setPassword(strpassword);
-                    user.save();
-                    Toast.makeText(RegistActivity.this, "创建用户成功", Toast.LENGTH_SHORT).show();
-                    finish();//结束本活动，就会回到登陆活动
                 }
+                //users数据为空或者用户名没有注册的情况,存数据
+                Log.e(TAG, "数据库为空");
+                User user = new User();//如果不新建一个对象，则会覆盖掉原来的数据
+                user.setUsername(strusername);
+                user.setPassword(strpassword);
+                user.save();
+                Toast.makeText(RegistActivity.this, "创建用户成功", Toast.LENGTH_SHORT).show();
+                finish();//结束本活动，就会回到登陆活动
+
             }
 
 
